@@ -1,0 +1,1 @@
+docker run --rm --name express -v $PWD:/home/node/app -w /home/node/app -p 3000:3000 -it node bash

@@ -12,12 +12,12 @@ api.post("/token", async function(req, res, next) {
     passport.authenticate("basic", function(error, user) {
         try {
             if (error || !user) {
-                next(boom.unauthorized());
+                return next(boom.unauthorized());
             }
 
             req.login(user, { session: false }, async function(error) {
                 if (error) {
-                    next(error);
+                    return next(error);
                 }
 
                 const payload = { sub: user.username, email: user.email };
