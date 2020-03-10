@@ -2,6 +2,7 @@ const Sentry = require("@sentry/node");
 const boom = require('boom');
 const { config } = require("../../config");
 const isRequestAjaxOrApi = require('../../utils/isRequestAjaxOrApi');
+const debug = require('debug')("app:error");
 
 Sentry.init({ dsn: `https://${config.sentryDns}@sentry.io/${config.sentryId}` });
 
@@ -13,7 +14,7 @@ function withErrorStack(err, stack) {
 
 function logErrors(err, req, res, next) {
     Sentry.captureException(err);
-    console.log(err.stack);
+    debug(err.stack);
     next(err);
 }
 

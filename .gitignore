@@ -2,3 +2,10 @@
 .env
 /database
 /app
+.nyc_output
+Dockerfile
+docker-compose.yml
+docker-compose.debug.yml
+schema-product.json
+.vscode
+.dockerignore
