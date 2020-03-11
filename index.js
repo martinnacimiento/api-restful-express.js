@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const boom = require('boom');
 const helmet = require("helmet");
 const cors = require('cors');
+const debug = require('debug')("app:server");
 const productsRouter = require('./routes/views/products');
 const usersRouter = require('./routes/views/users');
 const productsApiRouter = require('./routes/api/products');
@@ -61,4 +62,7 @@ app.use(wrapErrors);
 app.use(clientErrorHandler);
 app.use(errorHandler);
 
-module.exports = app;
+// server
+const server = app.listen(3000, function() {
+  debug(`Listening http://localhost:${server.address().port}`);
+});
