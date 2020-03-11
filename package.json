@@ -1,14 +1,13 @@
 {
-  "name": "api-express-js",
+  "name": "express-generator-example",
   "version": "0.0.0",
   "private": true,
-  "main": "index.js",
   "scripts": {
-    "start": "node index",
+    "start": "node ./bin/www",
     "build": "NODE_ENV=production cd public/assets && cleancss -o main.min.css main.css",
-    "dev": "nodemon index",
+    "dev": "nodemon ./bin/www",
     "test:cover": "nyc npm run test",
-    "dev:inspect": "nodemon --inspect index",
+    "dev:inspect": "nodemon --inspect ./bin/www",
     "dev:debug": "DEBUG=express:*,app:* npm run dev",
     "debug": "DEBUG=express:*,app:* npm run start",
     "test": "mocha --exit"
