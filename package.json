@@ -8,7 +8,7 @@
     "build": "NODE_ENV=production cd public/assets && cleancss -o main.min.css main.css",
     "dev": "nodemon ./index",
     "test:cover": "nyc npm run test",
-    "dev:inspect": "nodemon --inspect ./bin/www",
+    "dev:inspect": "nodemon --inspect ./index",
     "dev:debug": "DEBUG=express:*,app:* npm run dev",
     "debug": "DEBUG=express:*,app:* npm run start",
     "test": "mocha --exit"
