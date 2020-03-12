@@ -1,8 +1,18 @@
 nav.navbar.is-primary
     .container
         .navbar-brand
-            a.navbar-item
+            a.navbar-item(
+                onclick="window.location.href='/'"
+            )
                 img(src='/static/logo/octolion-white@2x.png' width='112' height='28')
+            .navbar-item.is-expanded
+                input.input.is-rounded(
+                    @keyup.enter="search"
+                    v-model="query"
+                    type="text"
+                    placeholder="Buscar"
+                )
+
         .navbar-menu
             .navbar-end
                 .navbar-item

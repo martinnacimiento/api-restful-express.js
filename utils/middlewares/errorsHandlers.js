@@ -1,10 +1,10 @@
-const Sentry = require("@sentry/node");
+//const Sentry = require("@sentry/node");
 const boom = require('boom');
 const { config } = require("../../config");
 const isRequestAjaxOrApi = require('../../utils/isRequestAjaxOrApi');
 const debug = require('debug')("app:error");
 
-Sentry.init({ dsn: `https://${config.sentryDns}@sentry.io/${config.sentryId}` });
+//Sentry.init({ dsn: `https://${config.sentryDns}@sentry.io/${config.sentryId}` });
 
 function withErrorStack(err, stack) {
     if (config.dev) {
@@ -13,7 +13,7 @@ function withErrorStack(err, stack) {
 }
 
 function logErrors(err, req, res, next) {
-    Sentry.captureException(err);
+    //Sentry.captureException(err);
     debug(err.stack);
     next(err);
 }

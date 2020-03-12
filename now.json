@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "index.js", "use": "@now/node-server" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/" }
+  ],
+  "env": {
+    "DB_USER": "@db_user",
+    "DB_PASSWORD": "@db_password",
+    "DB_NAME": "@db_name",
+    "AUTH_ADMIN_USERNAME": "@auth_admin_username",
+    "AUTH_PASSWORD": "@auth_admin_password",
+    "AUTH_ADMIN_EMAIL": "@auth_admin_email",
+    "AUTH_JWT_SECRET": "@auth_jwt_secret"
+  }
+}

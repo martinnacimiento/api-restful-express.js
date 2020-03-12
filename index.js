@@ -9,7 +9,6 @@ const boom = require('boom');
 const helmet = require("helmet");
 const cors = require('cors');
 const productsRouter = require('./routes/views/products');
-const usersRouter = require('./routes/views/users');
 const productsApiRouter = require('./routes/api/products');
 const authApiRouter = require('./routes/api/auth');
 const isRequestAjaxOrAPi = require('./utils/isRequestAjaxOrApi');
@@ -61,4 +60,4 @@ app.use(wrapErrors);
 app.use(clientErrorHandler);
 app.use(errorHandler);
 
-module.exports = app;
+const server = app.listen(3000, function() {});

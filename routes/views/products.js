@@ -6,6 +6,10 @@ const { config } = require("../../config");
 const cacheResponse = require("../../utils/cacheResponse");
 const { FIVE_MINUTES_IN_SECONDS } = require("../../utils/time");
 
+const { productIdSchema } = require('../../utils/schemas/products');
+const validation = require('../../utils/middlewares/validationHandler');
+
+
 const productService = new ProductsService();
 
 router.get("/", async function(req, res, next) {
@@ -18,5 +22,20 @@ router.get("/", async function(req, res, next) {
     next(err);
   }
 });
+router.get(
+  "/:productId",
+  validation({ productId: productIdSchema }, "params"),
+  async function(req, res, next) {
+    //cacheResponse(res, FIVE_MINUTES_IN_SECONDS);
+    const { productId } = req.params;
+    
+    try {
+      const product = await productService.getProduct({ productId });
+      res.render("product", { product, dev: config.dev });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 module.exports = router;

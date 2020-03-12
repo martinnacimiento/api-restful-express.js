@@ -1,0 +1,32 @@
+extends layout.pug
+
+block hero
+    section.hero.is-dark.is-bold
+        .hero-body
+            .container
+                h1.title Octolion Shop
+                h2.subtitle Find the best products a the best price
+
+block content
+    .container(style="flex: 1; padding: 50px 0;")
+        .columns.is-centered
+            .column.is-one-quarter
+                .card
+                    .card-image
+                        figure.image(style="height: 190px")
+                            img(src=product.image style="height: 100%; object-fit: cover")
+                    .card-content
+                        h1.title= product.name
+                        .button.is-fullwidth.is-primary
+                            span.icon
+                                i.fas.fa-shopping-cart
+                            span Add 
+                                strong= `${product.price} USD`
+            .column.is-one-quarter
+                .card
+                    .card-content
+                        h1.title Description
+                        .text= `${ product.description }`
+                        .tags
+                            each tag in product.tags
+                                span.tag.is-primary.is-light.is-rounded= `${ tag }`
